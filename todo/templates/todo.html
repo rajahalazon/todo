@@ -1,0 +1,80 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <title>To do app</title>
+    <style>
+        #head{
+            background-color:#1B5E20 ;
+            color:#ffffff ;
+            padding:5px ;
+            text-align: center;
+        }
+        .rajat{
+            padding: 10px;
+            margin: 10px;
+            width: 300px;
+        }
+        input[type='submit']{
+            background-color: #006064;
+            border: 0px;
+            font-size: 15px;
+            color: #ffffff;
+            border-radius: 10px;
+        }
+        #todo{
+            margin-left: 10%;
+            margin-right: 10%;
+            margin-top: 20px;
+            text-align: center;
+            background-color: #A5D6A7;
+            min-width: 400px;
+            border-radius: 20px;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body bgcolor='#E8F5E9'>
+    <div id='head'> <h1>To do app</h1></div>
+    <a href='/todo/logout/'>
+        <img src="{% static 'logout.png' %} " width='40' style='float: left; margin-top: -70px;'>
+    </a>
+    </div>
+    <div style='background-color: #A5D6A7; text-align: center; padding: 10px;'>
+    Welcome <b>{{user}}!</b>
+    </div>
+    <div id='todo'>
+        <form action='/todo/save/' method='POST'>
+    {% csrf_token %}
+        <input type='text' name='txt_title' class='rajat' placeholder="Title" required><br>
+        <textarea class='rajat' rows='5' style="margin-bottom: -15px;" placeholder="Description" name="txt_description"></textarea>
+        <input type='submit' value='Save' class='rajat'>
+    </form>
+    </div>
+    <div style="margin: 20px;">
+        <table width='100%' cellpadding='5' border='1' cellspacing='0'>
+            <tr>
+                <th>Title</th>
+                <th colespan='2'>Description</th>
+            </tr>
+            {% for todo in todos %}
+            <tr>
+                <td>{{todo.1}}</td>
+                <td>{{todo.2}}</td>
+                <td align="right" width='20'><a href='/todo/delete?id={{todo.0}}'>Delete</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+    <hr>
+    <p align='center'>
+        <b>Developed by:</b> <i>Raja Halazon</i>
+    </p>
+    
+</body>
+</html>

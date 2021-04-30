@@ -1,0 +1,62 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <title>To do app</title>
+    <style>
+        #head{
+            background-color:#1B5E20 ;
+            color:#ffffff ;
+            padding:5px ;
+            text-align: center;
+        }
+        input{
+            padding: 10px;
+            margin: 10px;
+            width: 300px;
+        }
+        #login{
+            margin-left: 30%;
+            margin-right: 30%;
+            margin-top: 100px;
+            text-align: center;
+            background-color: #A5D6A7;
+            min-width: 400px;
+            border-radius: 20px;
+            padding: 20px;
+        }
+        input[type='submit']{
+            background-color: #006064;
+            border: 0px;
+            font-size: 15px;
+            color: #ffffff;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body bgcolor='#E8F5E9'>
+    <div id='head'> <h1>To do app</h1></div>
+    <a href='/todo/home'>
+        <img src="{% static 'home.png' %}" width="40" style='float: right; margin-top: -70px;'>
+    </a>
+    </div>
+    <form id='login' action='/todo/login/' method='POST'>
+    {% csrf_token %}
+        <input type='text' name='txt_username' placeholder='Username' required><br>
+        <input type='password' name='txt_password' placeholder="Password" required><br>
+        <input type='submit' value='LOGIN'>
+    </form>
+    <p style='color:#B71C1C'>{{message}} </p>
+    </div>
+    <hr>
+    <p align='center'>
+        <b>Developed by:</b> <i>Raja Halazon</i>
+    </p>
+    
+</body>
+</html>
